@@ -4,7 +4,20 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-nice-plug = { version = "0.3", features = ["standalone"] }
+nice-plug = { version = "0.3", features = ["standalone", "unsafe_flush_denormals"] }
 
 [lib]
 crate-type = ["cdylib", "lib"]
+
+[profile.dev]
+opt-level = 1
+
+[profile.release]
+codegen-units = 1
+lto = "thin"
+strip = "symbols"
+
+[profile.profiling]
+inherits = "release"
+debug = true
+strip = "none"
