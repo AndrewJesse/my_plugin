@@ -1,0 +1,10 @@
+[package]
+name = "my_plugin"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+nice-plug = { version = "0.3", features = ["standalone"] }
+
+[lib]
+crate-type = ["cdylib", "lib"]
